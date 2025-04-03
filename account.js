@@ -2,19 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedUserData = urlParams.get('user');
 
-    // URL-safe Base64를 표준 Base64로 변환하는 함수
-    function urlSafeBase64ToBase64(str) {
-        return str
-            .replace(/-/g, '+')    // '-'을 '+'로
-            .replace(/_/g, '/')    // '_'을 '/'로
-            .padEnd(str.length + (4 - str.length % 4) % 4, '='); // padding 처리
-    }
-
-    // UTF-8 Base64 복호화 함수
     function decodeBase64(str) {
         try {
-            const standardBase64 = urlSafeBase64ToBase64(str); // URL-safe Base64를 표준 Base64로 변환
-            return decodeURIComponent(escape(atob(standardBase64))); // Base64 디코딩 후 UTF-8 변환
+            // URL-safe Base64를 표준 Base64로 변환
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            // Base64 디코딩
+            return decodeURIComponent(escape(atob(str)));
         } catch (e) {
             console.error("🚨 Base64 복호화 오류:", e);
             return null;
