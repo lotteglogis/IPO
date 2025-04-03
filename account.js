@@ -10,15 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
     function decodeBase64(str) {
         // URL-safe Base64를 표준 Base64로 변환
         str = str.replace(/-/g, '+').replace(/_/g, '/');
+        
         // 패딩 추가
         const padding = str.length % 4;
         if (padding) {
-            str += '='.repeat(4 - padding);
+            str += '='.repeat(4 - padding); // '='로 패딩을 추가
         }
-        // 디코딩
-        return decodeURIComponent(escape(atob(str)));
+
+        try {
+            // Base64 디코딩 및 URL 디코딩
+            return decodeURIComponent(escape(atob(str)));
+        } catch (error) {
+            console.error("🚨 Base64 복호화 오류:", error);
+            return null;
+        }
     }
-    
 
     if (encodedUserData) {
         try {
