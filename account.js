@@ -2,30 +2,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedUserData = urlParams.get('user');
 
-    function decodeBase64(str) {
-        try {
-            // URL-safe Base64를 표준 Base64로 변환
-            str = str.replace(/-/g, '+').replace(/_/g, '/');
-
-            // Base64 길이가 4의 배수가 되도록 '=' 패딩 추가
-            const padding = str.length % 4;
-            if (padding) {
-                str += '='.repeat(4 - padding);
-            }
-
-            // 공백 제거
-            str = str.replace(/\s/g, ''); 
-
-            // 디코딩 전 Base64 값 로그 출력 (디버깅용)
-            console.log("📢 디코딩할 Base64 값:", str);
-            
-            // Base64 디코딩
-            return decodeURIComponent(escape(atob(str)));
-        } catch (e) {
-            console.error("🚨 Base64 복호화 오류:", e);
-            return null;
-        }
+    function encodeBase64(str) {
+        const encoded = btoa(unescape(encodeURIComponent(str))); // 표준 Base64로 인코딩
+        return encoded.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); // URL-safe 변환
     }
+    
+    function decodeBase64(str) {
+        // URL-safe Base64를 표준 Base64로 변환
+        str = str.replace(/-/g, '+').replace(/_/g, '/');
+        // 패딩 추가
+        const padding = str.length % 4;
+        if (padding) {
+            str += '='.repeat(4 - padding);
+        }
+        // 디코딩
+        return decodeURIComponent(escape(atob(str)));
+    }
+    
 
     if (encodedUserData) {
         try {
