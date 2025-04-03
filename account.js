@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const encoded = btoa(unescape(encodeURIComponent(str))); // 표준 Base64로 인코딩
         return encoded.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); // URL-safe 변환
     }
-    
+
     function decodeBase64(str) {
+        console.log("디코딩할 Base64 문자열:", str); // 디버깅용
+    
         // URL-safe Base64를 표준 Base64로 변환
         str = str.replace(/-/g, '+').replace(/_/g, '/');
-        
+    
         // 패딩 추가
         const padding = str.length % 4;
         if (padding) {
@@ -18,8 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            // Base64 디코딩 및 URL 디코딩
-            return decodeURIComponent(escape(atob(str)));
+            const decodedStr = atob(str);
+            const decoder = new TextDecoder('utf-8'); // TextDecoder를 사용하여 UTF-8 디코딩
+            return decoder.decode(new Uint8Array([...decodedStr].map(c => c.charCodeAt(0))));
         } catch (error) {
             console.error("🚨 Base64 복호화 오류:", error);
             return null;
@@ -67,12 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const lawBannerContent = document.querySelector(".law-banner-content");
     const lawBannerArrow = document.querySelector(".law-banner-arrow");
 
-    if (lawBannerHeader && lawBannerContent && lawBannerArrow) { 
+    if (lawBannerHeader && lawBannerContent && lawBannerArrow) {
         lawBannerHeader.addEventListener("click", function () {
             lawBannerContent.classList.toggle("open");
-            lawBannerArrow.innerHTML = lawBannerContent.classList.contains("open") 
+            lawBannerArrow.innerHTML = lawBannerContent.classList.contains("open")
                 ? '<img src="images/up-arrow.png" alt="화살표" class="arrow-img" />'
-                : '<img src="images/down-arrow.png" alt="화살표" class="arrow-img" />'; 
+                : '<img src="images/down-arrow.png" alt="화살표" class="arrow-img" />';
         });
     }
 });
