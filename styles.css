@@ -1,0 +1,1082 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('font/PretendardVariable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Pretendard', Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+
+
+.top-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 13px 15px;
+    background: rgba(0, 0, 0, 0.6); /* 스크롤 전 반투명 검은색 */
+    transition: background 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.top-header.scrolled {
+    background: rgba(255, 255, 255, 1); /* 스크롤 후 완전 흰색 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-img {
+    width: 33vw; /* 뷰포트 너비의 10% */
+    max-width: 200px; /* 최대 크기 제한 */
+    height: auto;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+
+
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+}
+
+/* 배경 영상 */
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 검은 반투명 오버레이 (영상 위에만 적용) */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 검은 반투명 */
+    z-index: 1;
+}
+
+/* 텍스트 컨테이너 */
+.video-text-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    width: 90%;
+    max-width: 800px;
+    line-height: 1.4;
+}
+
+/* 초기 상태 (숨김) */
+.video-text, 
+.highlight-text {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95); /* 살짝 아래 & 작게 시작 */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 첫 번째 문구 등장 */
+.video-text.show {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* 원래 크기로 부드럽게 이동 */
+}
+
+/* 두 번째 문구 등장 (0.5초 딜레이) */
+.highlight-text.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: 0.5s; /* 0.5초 후에 실행 */
+}
+
+/* 강조 텍스트 */
+.highlight-text {
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.4);
+}
+
+
+
+/* 입력 폼 (비디오 섹션 안에서 고정된 위치) */
+.floating-input-section {
+    position: absolute;
+    bottom: 5%;  /* 비디오 하단에서 고정 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(230, 230, 231, 0.8); /* 불투명도 0.8 (80%) */
+    padding: 20px 30px;
+    border-radius: 2px;  /* 둥근 모서리 */
+    text-align: left;
+    width: 80%;
+    max-width: 400px; /* 최대 너비 설정 */
+    z-index: 10; /* 비디오 위로 배치 */
+    box-sizing: border-box; /* padding을 포함한 전체 크기 계산 */
+}
+
+/* 체크박스와 설명을 수평으로 배치 */
+.input-container {
+    display: flex;
+    align-items: center;  /* 체크박스와 텍스트를 수평 중앙 정렬 */
+    margin-bottom: 15px;
+}
+
+/* 각 입력 필드 옆 제목 스타일 */
+.input-label {
+    font-size: 0.9rem !important;  /* 중요도를 높여서 적용 */
+    font-weight: 700;  /* 굵은 글씨 */
+    color: #000000;
+    white-space: nowrap;  /* 제목이 한 줄로 표시되도록 */
+    width: 60px;  /* 레이블 영역의 고정 너비 (필요에 따라 조정) */
+    flex-shrink: 0;
+}
+
+/* 입력 필드 스타일 */
+.input-field {
+    font-family: 'Pretendard', Arial, sans-serif;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    outline: none;
+    margin: 5px 0;
+    flex-grow: 1;  /* 필드가 가능한 너비를 다 사용하도록 설정 */
+    min-width: 150px;  /* 최소 너비를 설정하여 너무 좁아지지 않도록 */
+}
+
+/* 체크박스와 설명을 한 줄에 붙게 하는 컨테이너 */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px; /* 필요하면 여백 조정 */
+}
+
+/* 체크박스 스타일 */
+.checkbox {
+    margin: 0;  /* 여백 제거 */
+    transform: scale(1.0);
+}
+
+/* 체크박스 설명 텍스트 스타일 */
+.checkbox-text {
+    font-size: 0.8rem;
+    color: #000000;
+    font-weight: 500;
+    margin: 0;  /* 여백 제거 */
+}
+
+/* 버튼 스타일 */
+.submit-btn {
+    font-family: 'Pretendard', Arial, sans-serif;
+    width: 100%;  /* 버튼 너비를 폼의 100%로 꽉 채움 */
+    padding: 15px;  /* 버튼의 높이를 적당히 키움 */
+    font-size: 1.0rem;
+    font-weight: 500;
+    color: white;
+    background-color: #da291c;
+    border: none;
+    border-radius: 2px;  /* 둥근 모서리 */
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    text-align: center;  /* 텍스트 가운데 정렬 */
+    margin-top: 10px;  /* 버튼과 입력 필드 사이의 간격을 추가 */
+}
+
+
+
+/* 슬라이더 컨테이너: 화면 전체 너비에 맞게, 고정 높이 */
+.slider-container {
+    position: relative;
+    width: 100vw;
+    height: 520px; /* 고정 높이 - 필요에 따라 조정 */
+    overflow: hidden;
+    background: url('images/bg_main_01.jpg') center/cover no-repeat;
+    margin: 50px auto;
+  }
+
+/* 슬라이더 헤더: 컨테이너의 상단에 배치, 한 줄로 표시 */
+.slider-header {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    color: #2a2a2a;
+    font-size: 1.7em;
+    font-weight: 900;
+    white-space: nowrap; /* 줄바꿈 없이 한 줄로 표시 */
+    z-index: 10;
+    position: relative; /* 헤더가 슬라이더 내부에서 독립적인 요소로 존재 */
+  }
+  
+  
+  /* 슬라이더: 8개의 슬라이드를 가로로 나열 */
+  .slider {
+    display: flex;
+    width: 100%; /* 8개 슬라이드 * 100% */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* 개별 슬라이드 */
+  .slide {
+    flex: 1 0 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* 슬라이드 이미지: 왼쪽 상단에 고정 */
+  .slide-img {
+    position: absolute;
+    top: 0%;
+    left: 5%;
+    width: 50%;    /* 컨테이너 너비의 35% */
+    height: auto;
+    max-height: 80%;
+    object-fit: cover;
+    border-radius: 2px;
+    z-index: 2;
+    box-shadow: 9px 9px 15px rgba(0, 0, 0, 0.2); /* 은은한 그림자 */
+  }
+  
+  .slide-text {
+    position: absolute;
+    bottom: 20%;
+    right: 5%;
+    width: 50%;    /* 고정된 너비 */
+    height: 270px; /* 고정된 높이 */
+    background-color: #da291c;
+    color: white;
+    padding-left: 13%;  /* 왼쪽 여백 */
+    padding-top: 3%;   /* 상단 여백 */
+    padding-right: 10%;   /* 상단 여백 */
+    border-radius: 2px;
+    z-index: 1;
+    overflow: hidden;
+    box-sizing: border-box;  /* 패딩 포함하여 크기 유지 */
+  }
+  
+  /* 슬라이드 텍스트 제목 */
+  .slide-text h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+/* 슬라이드 텍스트 본문 */
+.slide-text p {
+    font-size: 1.4em;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 긴 텍스트는 '...'으로 처리 */
+    word-wrap: break-word; /* 긴 단어가 있으면 줄바꿈 */
+    white-space: normal; /* 자동 줄바꿈 허용 */
+    font-weight: 500;
+  }
+  
+  /* 모바일 반응형: 화면 너비가 768px 이하 */
+  @media (max-width: 768px) {
+    .slider-container {
+      height: 400px;
+      width: 100%;
+    }
+
+.slider-header {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    color: #2a2a2a;
+    font-size: 1.0em;
+    font-weight: 900;
+    white-space: nowrap; /* 줄바꿈 없이 한 줄로 표시 */
+    z-index: 10;
+    position: relative; /* 헤더가 슬라이더 내부에서 독립적인 요소로 존재 */
+  }
+    
+    .slide-img {
+      top: 0%;
+      left: 5%;
+      width: 70%;
+      max-height: 70%;
+    }
+    
+    .slide-text {
+        position: absolute;
+        bottom: 28%;
+        right: 5%;
+        width: 65%;    /* 고정된 너비 */
+        height: 50%; /* 고정된 높이 */
+        background-color: #da291c;
+        color: white;
+        padding-left: 10%;  /* 왼쪽 여백 */
+        padding-top: 27%;   /* 상단 여백 */
+        padding-right: 10%;   /* 상단 여백 */
+        border-radius: 2px;
+        z-index: 1;
+        overflow: hidden;
+        box-sizing: border-box;  /* 패딩 포함하여 크기 유지 */
+      }
+    
+    .slide-text h2 {
+      font-size: 1.1em;
+      margin-bottom: 3px;
+    }
+    
+    .slide-text p {
+      font-size: 0.8em;
+    }
+  }
+  
+
+
+/* 링크 배너 섹션 (세로 배치) */
+.link-banner {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    width: 100%;
+  }
+  
+  /* 개별 배너 */
+  .banner {
+    position: relative;
+    display: flex;
+    align-items: flex-start; /* 왼쪽 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    padding: 30px;
+    text-decoration: none;
+    height: 150px; /* 높이 고정 */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* 배경 이미지 */
+  .banner:first-child {
+    background-image: url('images/banner1.jpg');
+  }
+  
+  .banner:last-child {
+    background-image: url('images/banner2.jpg');
+  }
+  
+  /* 배너 텍스트 영역 */
+  .banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+  }
+  
+  /* 제목 (굵고 흰색) */
+  .banner-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+  }
+  
+  /* 본문 (불투명함, 얇음) */
+  .banner-desc {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+  
+  /* 바로가기 (굵고 흰색) */
+  .banner-link {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: white;
+    margin-top: 8px;
+    display: inline-block;
+  }
+  
+  /* 마우스 호버 효과 */
+  .banner:hover .banner-link {
+    text-decoration: underline;
+  }
+
+
+
+  /* 뉴스 섹션 */
+.news-section {
+    width: 100%;
+    background-image: url('images/news.jpg'); /* 배경 이미지 */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 60px 0;
+  }
+  
+  /* 뉴스 헤더 */
+  .news-header {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #2a2a2a;
+    margin-bottom: 35px;
+  }
+  
+  /* 뉴스 리스트 */
+  .news-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 뉴스 박스 간격 */
+    padding-left: 20px;  /* 왼쪽 여백 */
+    padding-right: 20px; /* 오른쪽 여백 */
+  }
+  
+/* 개별 뉴스 아이템 */
+.news-item {
+    width: 400px;          /* 가로 크기 고정 */
+    height: 120px;         /* 세로 크기 고정 */
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    
+    /* 외곽선 추가 */
+    border: 2px solid rgba(0, 0, 0, 0.1);  /* 흐린 검은색 테두리 */
+    
+    /* 글씨 수가 많아도 박스 크기 유지 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* 제목은 위, 날짜는 아래 */
+    overflow: hidden;
+}
+  
+/* 뉴스 제목 */
+.news-title {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: black;
+    text-align: left;
+    margin: 0; /* 기본 마진 제거 */
+}
+  
+  /* 뉴스 날짜 */
+  .news-date {
+    font-size: 0.7em;
+    color: gray;
+    text-align: left;
+    margin: 0;
+  }
+  
+  /* 마우스 호버 효과 */
+  .news-item:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.02);
+  }
+  
+
+
+  /* 푸터 스타일 */
+.footer {
+    background: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.7em;
+    color: #555;
+}
+
+/* 개인정보처리방침 & CCTV 링크 */
+.footer-links {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 400;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* 가로선 스타일 */
+.footer-divider {
+    width: 100%;
+    margin: 15px auto;
+    border: 0;
+    height: 1px;
+    background: #ddd;
+}
+
+/* SNS 아이콘 */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.footer-icons img {
+    width: 25px;
+    height: auto;
+    transition: 0.3s;
+}
+.footer-icons img:hover {
+    opacity: 0.7;
+}
+
+/* 로고 가운데 정렬 */
+.footer-logo img {
+    width: 120px;
+    margin: 5px 0;
+}
+
+/* 회사 정보 */
+.footer-info {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* 하단 영역 정렬 */
+.footer-bottom {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    padding: 10px 5%;
+}
+
+/* 저작권 문구 (왼쪽 정렬) */
+.copyright {
+    font-size: 0.9em;
+    color: #777;
+    text-align: left;
+    margin-bottom: 10px; /* 아이콘과 간격 */
+}
+
+/* 아이콘 6개 (오른쪽 정렬) */
+.footer-icons-right {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    gap: 5px;
+    width: 100%;
+}
+.footer-icons-right img {
+    width: auto;
+    height: 25px;
+    transition: 0.3s;
+}
+.footer-icons-right img:hover {
+    opacity: 0.7;
+}
+
+
+
+
+
+
+
+/* account.html 전용 헤더 스타일 */
+.account-header {
+    width: 100%;
+    background: #ffffff; /* 원하는 배경색 (예: 흰색) */
+    padding: 13px 15px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* 고정되지 않고 페이지에 함께 스크롤됨 */
+}
+
+/* 헤더 로고 이미지 스타일 */
+.account-header .logo-img {
+    width: 33vw; /* 뷰포트 너비의 10% */
+    max-width: 200px; /* 최대 크기 제한 */
+    height: auto;
+}
+
+
+
+/* 인사 배너 스타일 */
+.greeting-banner {
+    width: 100%;
+    height: 220px; /* 배너 높이는 필요에 따라 조정 */
+    background-image: url('images/bg_reservation_01.jpg'); /* 원하는 배경 이미지 경로 */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* 배너 콘텐츠 */
+.banner-content {
+    position: relative;
+    z-index: 2;
+}
+
+.banner-content h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+
+
+/* 법률 확인 배너 */
+.law-banner {
+    background-color: #da291c; /* 빨간색 배경 */
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.law-banner-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 13px 20px;
+}
+
+.law-banner-arrow {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.arrow-img {
+    width: 15px; /* 원하는 크기로 설정 */
+    height: auto; /* 원하는 크기로 설정 */
+    transition: transform 0.3s ease; /* 슬라이딩 효과를 위한 트랜지션 */
+}
+
+/* 슬라이딩 효과를 위한 콘텐츠 영역 */
+.law-banner-content {
+    max-height: 0;             /* 초기엔 0으로 숨김 */
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background-color: #ffffff;
+    padding: 0 20px;           /* 상하 padding은 open 시에 추가할 예정 */
+    font-size: 0.8rem;
+    color: #666666;            /* 회색 텍스트 */
+    border-bottom: 2px solid #da291c; /* 내용 하단에 빨간 선 */
+}
+
+/* open 클래스가 추가되면 max-height와 padding을 조정 */
+.law-banner-content.open {
+    max-height: 500px;         /* 충분히 큰 값으로 설정 (내용에 맞게 조정) */
+    padding: 10px 20px;        /* 열릴 때 상하 padding 추가 */
+}
+
+.law-banner-content p {
+    display: inline; /* 한 줄로 표시되도록 설정 */
+    margin: 0; /* p 태그의 기본 여백 제거 */
+    color: #666666; /* 문단 텍스트도 회색 */
+}
+
+.law-banner-content a {
+    display: inline;
+    color: #0000FF; /* 링크도 회색 */
+    text-decoration: underline;
+    margin: 5px 0;
+}
+
+
+
+/* 첫 번째 행의 가로선만 빨간색 */
+#account-details tr:first-child td {
+    border-top: 2px solid #da291c; /* 빨간색 가로선 추가 */
+}
+
+/* 계좌 정보 컨테이너 */
+.account-info-container {
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* 테이블 스타일 */
+#account-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* 테이블 셀 스타일 */
+#account-details td {
+    padding: 17px 15px;
+    border-bottom: 2px solid #ebebeb; /* 세로선은 없애고 가로선만 추가 */
+    text-align: left;
+}
+
+/* 테이블 헤더 스타일 */
+#account-details th {
+    padding: 12px 15px;
+    background-color: #f2f2f2;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 3px solid #da291c; /* 빨간색 가로선 추가 */
+}
+
+/* 계좌번호 보기 버튼 스타일 */
+#toggleAccountBtn {
+    background-color: #da291c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+#toggleAccountBtn:hover {
+    background-color: #b3241b;
+}
+
+/* 각 항목 스타일 */
+#account-details td strong {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+/* 테이블에서 텍스트 스타일 */
+#account-details td span {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* 평가 금액 스타일 */
+#valuation {
+    font-weight: bold;
+    color: #da291c;
+}
+
+
+
+/* 공통 스타일 */
+.step-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.step-images {
+    display: flex;
+    flex-wrap: wrap; /* 이미지를 한 줄로 배치하되, 공간이 부족하면 줄바꿈 */
+    justify-content: space-between; /* 이미지 간격을 맞추기 위해 정렬 */
+    gap: 10px; /* 이미지 사이의 간격 */
+}
+
+/* 기본 이미지 크기 설정 */
+.step-image {
+    width: 23%; /* PC 뷰에서는 한 줄에 4개의 이미지 배치 */
+    height: auto; /* 비율을 유지하여 자동으로 높이 설정 */
+    transition: transform 0.3s ease; /* 이미지 클릭 시 변형 애니메이션 */
+    object-fit: contain; /* 이미지를 잘리거나 왜곡되지 않게 함 */
+}
+
+/* 이미지 호버 시 확대 효과 */
+.step-image:hover {
+    transform: scale(1.05); /* 이미지 클릭 시 살짝 확대 */
+}
+
+/* 모바일 뷰 (화면 너비가 768px 이하일 때) */
+@media (max-width: 768px) {
+    .step-images {
+        justify-content: center; /* 모바일에서는 중앙 정렬 */
+    }
+
+    .step-image {
+        width: 40%; /* 모바일에서는 두 개씩 배치 */
+        height: auto; /* 비율을 유지 */
+    }
+}
+
+/* PC 뷰 (화면 너비가 769px 이상일 때) */
+@media (min-width: 769px) {
+    .step-images {
+        display: flex;
+        justify-content: center; /* 이미지를 중앙에 배치 */
+        gap: 10px; /* 이미지 사이 간격 설정 */
+    }
+
+    .step-image {
+        width: 15%; /* PC 뷰에서는 한 줄에 4개의 이미지 배치 */
+        height: auto; /* 비율을 유지 */
+    }
+}
+
+
+
+/* dsslink 컨테이너 */
+.dsslink-container {
+    max-width: 1100px; /* 계좌 정보 컨테이너와 동일한 너비 */
+    margin: 30px auto 0; /* 위쪽 여백 추가, 좌우 자동 정렬 */
+    display: flex;
+    justify-content: flex-end; /* 내부 요소를 오른쪽 정렬 */
+}
+
+/* dsslink 버튼 스타일 */
+.dsslink {
+    display: flex;
+    align-items: center;
+    background-color: #877669; /* 버튼 배경색 */
+    color: white; /* 텍스트 색 */
+    padding: 8px 15px;
+    border-radius: 2px;
+    text-decoration: none; /* 링크 스타일 제거 */
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+/* dsslink 아이콘 스타일 */
+.dsslink-icon {
+    width: 20px; /* 아이콘 크기 */
+    height: auto;
+    margin-left: 8px; /* 아이콘과 텍스트 간의 간격 */
+}
+
+
+
+/* 디테일 표 컨테이너 */
+.detail-table-container {
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* 디테일 표 스타일 */
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* 첫 번째 행(제목)의 가로선 빨간색 */
+.detail-table thead tr th {
+    padding: 15px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-top: 2px solid #da291c;
+    border-bottom: 2px solid #ebebeb; /* 세로선은 없애고 가로선만 추가 */
+}
+
+/* 푸터(왈라왈라왈라) */
+.detail-table tfoot tr td.small-text {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: left;
+    border-bottom: 1px solid #ebebeb; /* 세로선은 없애고 가로선만 추가 */
+    padding: 15px;
+}
+
+
+
+
+
+/* 섹션 기본 스타일 */
+.info-section {
+    width: 90%;
+    padding: 40px 0;
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+/* 개별 아이템 (이미지 + 텍스트) */
+.info-item {
+    display: block; /* 세로로 배치되도록 변경 */
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(50px); /* 아래에서 올라오는 효과 */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* 화면에 나타날 때의 상태 */
+.info-item.visible {
+    opacity: 1;
+    transform: translateY(0); /* 제자리로 돌아오게 */
+}
+
+/* 이미지 스타일 */
+.info-img {
+    width: 100%; /* 이미지 크기를 부모에 맞춰서 조절 */
+    height: auto;
+    margin-bottom: 30px; /* 이미지와 텍스트 사이 간격 */
+    box-shadow: 9px 9px 15px rgba(0, 0, 0, 0.1); /* 은은한 그림자 */
+}
+
+/* 제목 스타일 */
+.info-title {
+    width: 90%;
+    font-size: 0.9em;
+    font-weight: 600; /* 약간 굵은 폰트 */
+    color: #161616;
+    margin-bottom: 15px;
+}
+
+/* 본문 스타일 */
+.info-description {
+    font-size: 0.8em;
+    color: #161616;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* PC 화면에서 더 크게 보이도록 조정 (768px 이상) */
+@media (min-width: 768px) {
+    .info-section {
+        width: 50%; /* PC에서는 70%로 줄여서 더 중앙에 위치하도록 */
+    }
+
+    .info-title {
+        font-size: 1.3em; /* 제목을 더 크게 */
+        margin-bottom: 20px;
+    }
+
+    .info-description {
+        font-size: 0.9em; /* 본문을 더 크게 */
+        margin-bottom: 25px;
+    }
+
+/* 이미지 스타일 */
+.info-img {
+    height: auto;
+    margin: 0 auto 30px; /* 수평으로 가운데 정렬, 하단 간격 설정 */
+    display: block; /* block으로 변경하여 중앙 정렬 */
+}
+}
+
+
+
+
+
+/* 공정거래 섹션 */
+.compliance-section {
+    margin: 40px auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.compliance-title {
+    padding-left: 20px;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.compliance-box {
+    background-color: #ffffff;
+    margin: 10px auto;
+    width: 90%;
+    padding: 20px;
+    border-radius: 2px;
+    text-align: center;
+    border: 2px solid rgba(0, 0, 0, 0.1);  /* 흐린 검은색 테두리 */
+}
+
+.compliance-icon {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.compliance-text {
+    text-align: left;
+    font-size: 0.8em;
+    margin: 10px 0;
+}
+
+.compliance-divider {
+    width: 50%;
+    margin: 10px auto;
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.compliance-image {
+    display: flex;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 (필요한 경우) */
+    margin: 20px 0; /* 위아래 간격 추가 */
+}
+
+.compliance-image img {
+    max-width: 90%; /* 부모 요소 크기에 맞춤 */
+    height: auto; /* 비율 유지 */
+}
+
+
+/* CP 8대 원칙 */
+.cp-title {
+    padding-left: 20px;
+    font-size: 1em;
+    font-weight: 600;
+    margin: 30px 0 10px;
+}
+
+.cp-principles hr {
+    border: none;
+    border-top: 2px solid #ddd; /* 가로선 스타일 */
+    margin: 10px 0; /* 위아래 간격 */
+}
+
+.cp-principles {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cp-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cp-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #5f585a;
+    min-width: 30px;
+}
+
+.cp-text {
+    font-size: 14px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+    width: 100%;
+}
+
+/* 기본적으로 숨겨진 상태 */
+.cp-item, .compliance-box, .compliance-image {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 화면에 나타날 때 활성화되는 클래스 */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
