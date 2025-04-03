@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // 스크롤 관련 처리
     const header = document.querySelector(".top-header");
     const logo = document.querySelector(".logo-img");
 
@@ -12,12 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // 텍스트 애니메이션 처리
     const firstText = document.querySelector(".video-text");
     const secondText = document.querySelector(".highlight-text");
 
     setTimeout(() => firstText.classList.add("show"), 500);
     setTimeout(() => secondText.classList.add("show"), 1000);
 
+    // 폼 제출 처리
     document.querySelector(".user-form").addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -63,32 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Base64 인코딩 함수
     function encodeBase64(str) {
         return btoa(unescape(encodeURIComponent(str))); // UTF-8 안전 인코딩
     }
 
-    function decodeBase64(str) {
-        try {
-            return decodeURIComponent(escape(atob(str))); // UTF-8 안전 디코딩
-        } catch (e) {
-            console.error("🚨 Base64 복호화 오류:", e);
-            return null;
-        }
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
+    // URL 파라미터에서 사용자 정보 복호화
     const urlParams = new URLSearchParams(window.location.search);
     const encodedUserData = urlParams.get('user');
-
-    function decodeBase64(str) {
-        try {
-            return decodeURIComponent(escape(atob(str))); // UTF-8 안전 디코딩
-        } catch (e) {
-            console.error("🚨 Base64 복호화 오류:", e);
-            return null;
-        }
-    }
 
     if (encodedUserData) {
         try {
@@ -127,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // 법률 확인 배너 토글 처리
     const lawBannerHeader = document.querySelector(".law-banner-header");
     const lawBannerContent = document.querySelector(".law-banner-content");
     const lawBannerArrow = document.querySelector(".law-banner-arrow");
@@ -139,20 +125,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 : '<img src="images/down-arrow.png" alt="화살표" class="arrow-img" />';
         });
     }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
+    // 슬라이드 쇼 처리
     const slides = document.querySelectorAll(".slide");
     const slider = document.querySelector(".slider");
     let currentIndex = 0;
     const totalSlides = slides.length;
-  
+
     function nextSlide() {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        currentIndex = (currentIndex + 1) % totalSlides;
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
-  
+
     setInterval(nextSlide, 3000); // 3초마다 슬라이드 전환
-  });
-  
-  
+});
