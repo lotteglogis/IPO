@@ -12,14 +12,27 @@ document.addEventListener("DOMContentLoaded", function () {
             .padEnd(str.length + (4 - str.length % 4) % 4, '='); // padding 처리
     }
 
-    // Base64 복호화 함수 (escape/encodeURIComponent 제거)
+    // Base64 디코딩 함수 (TextDecoder 사용)
     function decodeBase64(str) {
-        return atob(str); // Base64 디코딩
+        try {
+            const decodedString = atob(str);  // 표준 Base64로 디코딩
+            const bytes = new Uint8Array(decodedString.length);
+            for (let i = 0; i < decodedString.length; i++) {
+                bytes[i] = decodedString.charCodeAt(i);
+            }
+            const decoder = new TextDecoder("utf-8");
+            return decoder.decode(bytes);  // UTF-8 문자열로 디코딩
+        } catch (error) {
+            console.error("Base64 복호화 오류:", error);
+            throw new Error("Base64 복호화에 실패했습니다.");
+        }
     }
 
     if (encodedUserData) {
         try {
             const decodedUserData = urlSafeBase64ToBase64(encodedUserData); // URL-safe Base64 변환
+            console.log("📢 변환된 표준 Base64:", decodedUserData);
+
             const user = JSON.parse(decodeBase64(decodedUserData));
 
             console.log("📢 복호화된 사용자 데이터:", user);
