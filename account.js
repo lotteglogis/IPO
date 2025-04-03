@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // UTF-8 Base64 복호화 함수
     function decodeBase64(str) {
-        return new TextDecoder().decode(Uint8Array.from(atob(str), c => c.charCodeAt(0)));
+        return decodeURIComponent(escape(atob(str)));
     }
+    
 
     if (encodedUserData) {
         try {
