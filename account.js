@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // URL-safe Base64를 표준 Base64로 변환
             str = str.replace(/-/g, '+').replace(/_/g, '/');
             
+            // 공백 제거 (이 부분 추가)
+            str = str.replace(/\s/g, '');  // 모든 공백 제거
+            
             // 디코딩 전 Base64 값 로그 출력 (디버깅용)
             console.log("📢 디코딩할 Base64 값:", str);
             
