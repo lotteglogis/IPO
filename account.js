@@ -1,44 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    // URL에 전달된 인코딩 문자열을 decodeURIComponent()로 복원
-    const encodedUserData = decodeURIComponent(urlParams.get('user'));
+    const encodedUserData = urlParams.get('user'); // decodeURIComponent() 제거
+
+    console.log("📢 URL에서 받은 인코딩된 데이터:", encodedUserData);
 
     // UTF-8 Base64 복호화 함수
     function decodeBase64(str) {
-        // atob()로 Base64 디코딩 후 escape()와 decodeURIComponent()로 UTF-8 문자열로 변환
-        return decodeURIComponent(escape(atob(str)));
+        return decodeURIComponent(escape(atob(str))); // Base64 디코딩 후 UTF-8 변환
     }
 
     if (encodedUserData) {
         try {
-            // 복호화된 문자열을 JSON으로 파싱
             const user = JSON.parse(decodeBase64(encodedUserData));
 
-            // 사용자 정보 표시
+            console.log("📢 복호화된 사용자 데이터:", user);
+
             document.getElementById('name').innerText = user.name;
             document.getElementById('combo').innerText = user.combo;
 
-            // 계좌번호 마스킹 처리 (마지막 4자리만 노출)
             const maskedAccount = "****" + user.account.slice(-4);
             document.getElementById('account').innerText = maskedAccount;
 
-            // 계좌번호 보기 버튼 클릭 시 계좌번호 보이기/숨기기 전환
             const toggleAccountBtn = document.getElementById('toggleAccountBtn');
             toggleAccountBtn.addEventListener('click', function () {
                 const accountElement = document.getElementById('account');
                 if (accountElement.innerText === maskedAccount) {
-                    accountElement.innerText = user.account; // 원래 계좌번호 표시
-                    toggleAccountBtn.innerText = "계좌번호 숨기기"; // 버튼 텍스트 변경
+                    accountElement.innerText = user.account;
+                    toggleAccountBtn.innerText = "계좌번호 숨기기";
                 } else {
-                    accountElement.innerText = maskedAccount; // 마스킹된 계좌번호 표시
-                    toggleAccountBtn.innerText = "계좌번호 보기"; // 버튼 텍스트 변경
+                    accountElement.innerText = maskedAccount;
+                    toggleAccountBtn.innerText = "계좌번호 보기";
                 }
             });
 
-            // 보유 주식 수 및 평가 금액 표시
             document.getElementById('sharesOwned').innerText = user.sharesOwned;
             const valuation = user.stockPrice * user.sharesOwned;
-            document.getElementById('valuation').innerText = valuation.toLocaleString(); // 평가 금액 표시
+            document.getElementById('valuation').innerText = valuation.toLocaleString();
 
         } catch (error) {
             console.error("사용자 정보를 복호화하는 중 오류 발생:", error);
