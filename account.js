@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .padEnd(str.length + (4 - str.length % 4) % 4, '='); // padding 처리
     }
 
-    // UTF-8 Base64 복호화 함수
+    // Base64 복호화 함수 (escape/encodeURIComponent 제거)
     function decodeBase64(str) {
-        return decodeURIComponent(escape(atob(str))); // Base64 디코딩 후 UTF-8 변환
+        return atob(str); // Base64 디코딩
     }
 
     if (encodedUserData) {
