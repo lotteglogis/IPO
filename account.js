@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Base64 디코딩 함수 (TextDecoder 사용)
     function decodeBase64(str) {
         try {
+            // Base64 디코딩을 위해 TextDecoder 사용
             const decodedString = atob(str);  // 표준 Base64로 디코딩
             const bytes = new Uint8Array(decodedString.length);
             for (let i = 0; i < decodedString.length; i++) {
