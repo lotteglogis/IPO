@@ -1,8 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const encodedUserData = urlParams.get('user'); // decodeURIComponent() 제거
+    const encodedUserData = urlParams.get('user'); // URL 파라미터에서 인코딩된 데이터 가져오기
 
     console.log("📢 URL에서 받은 인코딩된 데이터:", encodedUserData);
+
+    // URL-safe Base64를 표준 Base64로 변환하는 함수
+    function urlSafeBase64ToBase64(str) {
+        return str
+            .replace(/-/g, '+')    // '-'을 '+'로
+            .replace(/_/g, '/')    // '_'을 '/'로
+            .padEnd(str.length + (4 - str.length % 4) % 4, '='); // padding 처리
+    }
 
     // UTF-8 Base64 복호화 함수
     function decodeBase64(str) {
@@ -11,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (encodedUserData) {
         try {
-            const user = JSON.parse(decodeBase64(encodedUserData));
+            const decodedUserData = urlSafeBase64ToBase64(encodedUserData); // URL-safe Base64 변환
+            const user = JSON.parse(decodeBase64(decodedUserData));
 
             console.log("📢 복호화된 사용자 데이터:", user);
 
