@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             // URL-safe Base64를 표준 Base64로 변환
             str = str.replace(/-/g, '+').replace(/_/g, '/');
-            // Base64 디코딩
-            return decodeURIComponent(escape(atob(str)));
+            // Base64 디코딩 후 UTF-8 문자열로 변환
+            return decodeURIComponent(atob(str));
         } catch (e) {
             console.error("🚨 Base64 복호화 오류:", e);
             return null;
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (encodedUserData) {
         try {
+            // Base64로 인코딩된 데이터 디코딩 후 JSON 객체로 변환
             const user = JSON.parse(decodeBase64(encodedUserData));
 
             document.getElementById('name').innerText = user.name;
