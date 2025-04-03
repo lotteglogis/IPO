@@ -6,10 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             // URL-safe Base64를 표준 Base64로 변환
             str = str.replace(/-/g, '+').replace(/_/g, '/');
-            
-            // 공백 제거 (이 부분 추가)
-            str = str.replace(/\s/g, '');  // 모든 공백 제거
-            
+
+            // Base64 길이가 4의 배수가 되도록 '=' 패딩 추가
+            const padding = str.length % 4;
+            if (padding) {
+                str += '='.repeat(4 - padding);
+            }
+
+            // 공백 제거
+            str = str.replace(/\s/g, ''); 
+
             // 디코딩 전 Base64 값 로그 출력 (디버깅용)
             console.log("📢 디코딩할 Base64 값:", str);
             
