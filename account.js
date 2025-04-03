@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const encodedUserData = urlParams.get('user');
+    const encodedUserData = decodeURIComponent(urlParams.get('user'));
 
     // UTF-8 Base64 복호화 함수
     function decodeBase64(str) {
