@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 스크롤 관련 처리
     const header = document.querySelector(".top-header");
     const logo = document.querySelector(".logo-img");
 
@@ -13,14 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 텍스트 애니메이션 처리
     const firstText = document.querySelector(".video-text");
     const secondText = document.querySelector(".highlight-text");
 
     setTimeout(() => firstText.classList.add("show"), 500);
     setTimeout(() => secondText.classList.add("show"), 1000);
 
-    // 폼 제출 처리
     document.querySelector(".user-form").addEventListener("submit", async function (event) {
         event.preventDefault();
 
@@ -66,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Base64 인코딩 함수
     function encodeBase64(str) {
         return btoa(unescape(encodeURIComponent(str))); // UTF-8 안전 인코딩
     }
