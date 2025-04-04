@@ -9,16 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function decodeBase64(str) {
         console.log("디코딩할 Base64 문자열:", str); // 디버깅용
-    
+        
+        // 공백을 '+'로 복원 (URL 디코딩 과정에서 '+'가 공백으로 바뀌는 경우 방지)
+        str = str.replace(/ /g, '+');
+        
         // URL-safe Base64를 표준 Base64로 변환
         str = str.replace(/-/g, '+').replace(/_/g, '/');
-    
+        
         // 패딩 추가
         const padding = str.length % 4;
         if (padding) {
-            str += '='.repeat(4 - padding); // '='로 패딩을 추가
+            str += '='.repeat(4 - padding);
         }
-
+        
         try {
             const decodedStr = atob(str);
             const decoder = new TextDecoder('utf-8'); // TextDecoder를 사용하여 UTF-8 디코딩
