@@ -1,0 +1,35 @@
+name: Convert to JSON
+
+on:
+  push:
+    paths:
+      - "data_raw.txt"
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Convert data to JSON
+        run: |
+          echo 'import json' > convert.py
+          echo 'result = {"users": []}' >> convert.py
+          echo 'with open("data_raw.txt", "r", encoding="utf-8") as f:' >> convert.py
+          echo '    for line in f:' >> convert.py
+          echo '        main_data = line.split(",", 4)[:4]' >> convert.py
+          echo '        name, combo, account, sharesOwned = [field.strip() for field in main_data]' >> convert.py
+          echo '        result["users"].append({"name": name, "combo": combo, "account": account, "stockPrice": 13500, "sharesOwned": int(sharesOwned)})' >> convert.py
+          echo 'with open("data.json", "w", encoding="utf-8") as f:' >> convert.py
+          echo '    json.dump(result, f, ensure_ascii=False, indent=4)' >> convert.py
+          python3 convert.py
+
+      - name: Commit JSON file
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add data.json
+          git commit -m "Auto-converted data_raw.txt to JSON" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }} HEAD:main
