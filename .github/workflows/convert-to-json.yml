@@ -10,22 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. 저장소 체크아웃
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2. data_raw.txt를 data.json으로 변환하는 Python 스크립트 실행
       - name: Convert data to JSON
         run: |
           echo 'import json' > convert.py
           echo 'result = {"users": []}' >> convert.py
           echo 'with open("data_raw.txt", "r", encoding="utf-8") as f:' >> convert.py
           echo '    for line in f:' >> convert.py
+          echo '        # 쉼표로 구분된 4개 항목만 사용' >> convert.py
           echo '        main_data = line.split(",", 4)[:4]' >> convert.py
           echo '        name, combo, account, sharesOwned = [field.strip() for field in main_data]' >> convert.py
+          echo '        # stockPrice는 고정 값 13500 사용' >> convert.py
           echo '        result["users"].append({"name": name, "combo": combo, "account": account, "stockPrice": 13500, "sharesOwned": int(sharesOwned)})' >> convert.py
           echo 'with open("data.json", "w", encoding="utf-8") as f:' >> convert.py
           echo '    json.dump(result, f, ensure_ascii=False, indent=4)' >> convert.py
           python3 convert.py
 
+      # 3. 변경된 data.json을 커밋하고 PAT을 사용해 푸시
       - name: Commit and Push JSON
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -34,4 +39,4 @@ jobs:
           git config user.email "actions@github.com"
           git add data.json
           git commit -m "Auto-converted data_raw.txt to JSON" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }} HEAD:main
+          git push "https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}" HEAD:main
