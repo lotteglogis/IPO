@@ -13,6 +13,41 @@
             "account": "12345678",
             "stockPrice": 13500,
             "sharesOwned": 500
+        },
+        {
+            "name": "■■김세정■■",
+            "combo": "1",
+            "account": "1",
+            "stockPrice": 13500,
+            "sharesOwned": 1
+        },
+        {
+            "name": "박은국",
+            "combo": "유안타증권",
+            "account": "539713640136",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "주형건",
+            "combo": "키움증권",
+            "account": "55808682",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "■■이해수■■",
+            "combo": "1",
+            "account": "1",
+            "stockPrice": 13500,
+            "sharesOwned": 1
+        },
+        {
+            "name": "현승규",
+            "combo": "NH투자증권",
+            "account": "20001780394",
+            "stockPrice": 13500,
+            "sharesOwned": 10
         }
     ]
 }
