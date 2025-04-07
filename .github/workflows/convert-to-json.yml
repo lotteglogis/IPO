@@ -12,28 +12,47 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
-      - name: Convert data to JSON
+      - name: Convert data_raw.txt to data.json
         run: |
           echo 'import json' > convert.py
           echo 'result = {"users": []}' >> convert.py
           echo 'with open("data_raw.txt", "r", encoding="utf-8") as f:' >> convert.py
           echo '    for line in f:' >> convert.py
-          echo '        # 쉼표로 구분된 4개 항목만 사용' >> convert.py
-          echo '        main_data = line.split(",", 4)[:4]' >> convert.py
-          echo '        name, combo, account, sharesOwned = [field.strip() for field in main_data]' >> convert.py
-          echo '        # stockPrice는 고정 값 13500 사용' >> convert.py
-          echo '        result["users"].append({"name": name, "combo": combo, "account": account, "stockPrice": 13500, "sharesOwned": int(sharesOwned)})' >> convert.py
+          echo '        line = line.strip()' >> convert.py
+          echo '        if not line:' >> convert.py
+          echo '            continue' >> convert.py
+          echo '        tokens = [token.strip() for token in line.split(",")]' >> convert.py
+          echo '        try:' >> convert.py
+          echo '            name = tokens[0]' >> convert.py
+          echo '            combo = tokens[1]' >> convert.py
+          echo '            account = tokens[2]' >> convert.py
+          echo '            sharesOwned = int(tokens[3])' >> convert.py
+          echo '        except Exception as e:' >> convert.py
+          echo '            continue' >> convert.py
+          echo '        result["users"].append({' >> convert.py
+          echo '            "name": name,' >> convert.py
+          echo '            "combo": combo,' >> convert.py
+          echo '            "account": account,' >> convert.py
+          echo '            "stockPrice": 13500,' >> convert.py
+          echo '            "sharesOwned": sharesOwned' >> convert.py
+          echo '        })' >> convert.py
           echo 'with open("data.json", "w", encoding="utf-8") as f:' >> convert.py
           echo '    json.dump(result, f, ensure_ascii=False, indent=4)' >> convert.py
           python3 convert.py
 
-      - name: Commit and Push JSON
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+      - name: Commit changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add data.json
           git commit -m "Auto-converted data_raw.txt to JSON" || echo "No changes to commit"
-          git push "https://x-access-token:${GH_PAT}@github.com/lotteglogis/IPO.git" HEAD:main
+
+      - name: Push changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          git push origin HEAD:main
