@@ -1,4 +1,4 @@
-name: Convert to JSON
+name: git1
 
 on:
   push:
@@ -54,5 +54,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GIT1 }}
         run: |
-          git remote set-url origin "https://x-access-token:${GIT1}@github.com/${{ github.repository }}.git"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
           git push origin HEAD:main
