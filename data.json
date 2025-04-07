@@ -1,0 +1,25 @@
+{
+    "users": [
+        {
+            "name": "1",
+            "combo": "== 선택 ==",
+            "account": "1",
+            "stockPrice": 13500,
+            "sharesOwned": 100
+        },
+        {
+            "name": "홍",
+            "combo": "키움증권",
+            "account": "1234",
+            "stockPrice": 13500,
+            "sharesOwned": 200
+        },
+        {
+            "name": "3",
+            "combo": "토스증권",
+            "account": "22224444",
+            "stockPrice": 13500,
+            "sharesOwned": 300
+        }
+    ]
+}
