@@ -246,6 +246,97 @@
             "sharesOwned": 5
         },
         {
+            "name": "■■서민성■■",
+            "combo": "1",
+            "account": "1",
+            "stockPrice": 13500,
+            "sharesOwned": 1
+        },
+        {
+            "name": "백인수",
+            "combo": "토스증권",
+            "account": "19501038087",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "손태숙",
+            "combo": "NH투자증권",
+            "account": "20601918159",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "이만희",
+            "combo": "미래에셋증권",
+            "account": "744078445040",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "최영권",
+            "combo": "미래에셋증권",
+            "account": "192543200560",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "박석근",
+            "combo": "NH투자증권",
+            "account": "20401844049",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "류환열",
+            "combo": "유안타증권",
+            "account": "00101150078",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "강현경",
+            "combo": "미래에셋증권",
+            "account": "220393605640",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "신진식",
+            "combo": "미래에셋증권",
+            "account": "012225041362",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "이종현",
+            "combo": "삼성증권",
+            "account": "707832327401",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "안효천",
+            "combo": "하나증권",
+            "account": "37791480",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "박은주",
+            "combo": "KB증권",
+            "account": "26063379001",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "김형용",
+            "combo": "신한투자증권",
+            "account": "10501013633",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
             "name": "■■전상호■■",
             "combo": "1",
             "account": "1",
