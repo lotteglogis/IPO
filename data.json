@@ -162,6 +162,97 @@
             "sharesOwned": 5
         },
         {
+            "name": "■■막내■■",
+            "combo": "1",
+            "account": "1",
+            "stockPrice": 13500,
+            "sharesOwned": 1
+        },
+        {
+            "name": "김영현",
+            "combo": "삼성증권",
+            "account": "714068150901",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "이동철",
+            "combo": "NH투자증권",
+            "account": "20101709400",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "김동혁",
+            "combo": "키움증권",
+            "account": "4021409511",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "박정명",
+            "combo": "키움증권",
+            "account": "58075899",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "지명구",
+            "combo": "KB증권",
+            "account": "25816600601",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "김재곤",
+            "combo": "키움증권",
+            "account": "51048468",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "장건희",
+            "combo": "한국투자증권",
+            "account": "8067605001",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "신승한",
+            "combo": "나무증권",
+            "account": "20301239126",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "박정재",
+            "combo": "카카오페이증권",
+            "account": "02006686134",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "진영택",
+            "combo": "키움증권",
+            "account": "52259220",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "엄진섭",
+            "combo": "키움증권",
+            "account": "55291413",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "김재관",
+            "combo": "한국투자증권",
+            "account": "8032945501",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
             "name": "■■아영■■",
             "combo": "1",
             "account": "1",
