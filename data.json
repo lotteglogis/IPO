@@ -547,6 +547,20 @@
             "sharesOwned": 5
         },
         {
+            "name": "이남구",
+            "combo": "키움증권",
+            "account": "51034972",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "김해근",
+            "combo": "미래에셋증권",
+            "account": "844790811640",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
             "name": "■■김세정■■",
             "combo": "1",
             "account": "1",
