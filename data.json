@@ -281,6 +281,13 @@
             "sharesOwned": 10
         },
         {
+            "name": "이승진",
+            "combo": "키움증권",
+            "account": "33121679",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
             "name": "■■아영■■",
             "combo": "1",
             "account": "1",
@@ -348,7 +355,7 @@
             "combo": "토스증권",
             "account": "133301043637",
             "stockPrice": 13500,
-            "sharesOwned": 6951
+            "sharesOwned": 8271
         },
         {
             "name": "박준배",
