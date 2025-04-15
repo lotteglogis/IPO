@@ -260,6 +260,27 @@
             "sharesOwned": 10
         },
         {
+            "name": "백광현",
+            "combo": "KB증권",
+            "account": "36226220702",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "이성율",
+            "combo": "토스증권",
+            "account": "18001022688",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "강대용",
+            "combo": "유안타증권",
+            "account": "255065930138",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
             "name": "■■아영■■",
             "combo": "1",
             "account": "1",
