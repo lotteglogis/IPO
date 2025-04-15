@@ -610,16 +610,37 @@
             "sharesOwned": 5
         },
         {
-            "name": "■■3팀-이경락■■",
+            "name": "이경락",
+            "combo": "한화투자증권",
+            "account": "50046868011",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "■■3팀-이동규■■",
             "combo": "1",
             "account": "1",
             "stockPrice": 13500,
             "sharesOwned": 1
         },
         {
-            "name": "이경락",
-            "combo": "한화투자증권",
-            "account": "50046868011",
+            "name": "이재우",
+            "combo": "카카오페이증권",
+            "account": "02000921168",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "이종화",
+            "combo": "NH투자증권",
+            "account": "20901456537",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "홍삼표",
+            "combo": "대신증권",
+            "account": "7825007400",
             "stockPrice": 13500,
             "sharesOwned": 5
         }
