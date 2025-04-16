@@ -687,6 +687,48 @@
             "sharesOwned": 5
         },
         {
+            "name": "김왕봉",
+            "combo": "키움증권",
+            "account": "52627048",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "강영",
+            "combo": "미래에셋증권",
+            "account": "210229573998",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "문정기",
+            "combo": "KB증권",
+            "account": "26932394901",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "김정훈",
+            "combo": "KB증권",
+            "account": "27120200101",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "배근양",
+            "combo": "키움증권",
+            "account": "62410121",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "장황종",
+            "combo": "신한투자증권",
+            "account": "27028561606",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
             "name": "■■3팀-이동규■■",
             "combo": "1",
             "account": "1",
