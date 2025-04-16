@@ -769,6 +769,13 @@
             "account": "1920105625",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "백승권",
+            "combo": "한국투자증권",
+            "account": "7221354701",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
