@@ -505,6 +505,27 @@
             "sharesOwned": 10
         },
         {
+            "name": "류동균",
+            "combo": "KB증권",
+            "account": "34696984601",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "고춘현",
+            "combo": "한국투자증권",
+            "account": "6198113101",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "김영태",
+            "combo": "한국투자증권",
+            "account": "8129720201",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
             "name": "■■전상호■■",
             "combo": "1",
             "account": "1",
