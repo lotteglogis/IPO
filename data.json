@@ -839,6 +839,13 @@
             "account": "12101068558",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "권인섭",
+            "combo": "KB증권",
+            "account": "26790302101",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
