@@ -846,6 +846,13 @@
             "account": "26790302101",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "송기",
+            "combo": "키움증권",
+            "account": "59770906",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
