@@ -862,6 +862,13 @@
             "sharesOwned": 5
         },
         {
+            "name": "홍지형",
+            "combo": "유안타증권",
+            "account": "425581450121",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
             "name": "■■3팀-이동규■■",
             "combo": "1",
             "account": "1",
@@ -949,6 +956,13 @@
             "name": "허진",
             "combo": "삼성증권",
             "account": "712818878301",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "오영우",
+            "combo": "토스증권",
+            "account": "11001026654",
             "stockPrice": 13500,
             "sharesOwned": 5
         }
