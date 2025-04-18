@@ -972,6 +972,13 @@
             "account": "20101867718",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "김효남",
+            "combo": "NH투자증권",
+            "account": "20201030467",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
