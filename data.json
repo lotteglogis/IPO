@@ -638,6 +638,20 @@
             "sharesOwned": 5
         },
         {
+            "name": "최동순",
+            "combo": "삼성증권",
+            "account": "4090547701",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "추경섭",
+            "combo": "KB증권",
+            "account": "32228699101",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
             "name": "■■2팀-김세정■■",
             "combo": "1",
             "account": "1",
