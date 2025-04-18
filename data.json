@@ -965,6 +965,13 @@
             "account": "11001026654",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "강찬웅",
+            "combo": "NH투자증권",
+            "account": "20101867718",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
