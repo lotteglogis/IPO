@@ -638,7 +638,7 @@
             "sharesOwned": 5
         },
         {
-            "name": "■■김세정■■",
+            "name": "■■2팀-김세정■■",
             "combo": "1",
             "account": "1",
             "stockPrice": 13500,
@@ -666,7 +666,7 @@
             "sharesOwned": 10
         },
         {
-            "name": "■■이해수■■",
+            "name": "■■2팀-이해수■■",
             "combo": "1",
             "account": "1",
             "stockPrice": 13500,
@@ -683,6 +683,20 @@
             "name": "박경희",
             "combo": "미래에셋증권",
             "account": "01899001921",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "변재철",
+            "combo": "미래에셋증권",
+            "account": "7485739701",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "배양희",
+            "combo": "키움증권",
+            "account": "88333300",
             "stockPrice": 13500,
             "sharesOwned": 10
         },
