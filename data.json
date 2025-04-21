@@ -1014,6 +1014,20 @@
             "account": "20201030467",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "이형택",
+            "combo": "삼성증권",
+            "account": "715504494301",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "이천용",
+            "combo": "키움증권",
+            "account": "50596798",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
