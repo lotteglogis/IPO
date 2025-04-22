@@ -1049,6 +1049,20 @@
             "account": "50596798",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "이규웅",
+            "combo": "신한투자증권",
+            "account": "08350532406",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "홍성재",
+            "combo": "한화투자증권",
+            "account": "01011100747",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
