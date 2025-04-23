@@ -302,6 +302,34 @@
             "sharesOwned": 10
         },
         {
+            "name": "김건보",
+            "combo": "토스증권",
+            "account": "18001012567",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "박창범",
+            "combo": "KB증권",
+            "account": "20101744651",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "조영훈",
+            "combo": "삼성증권",
+            "account": "708309916501",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "천광록",
+            "combo": "키움증권",
+            "account": "10791620",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
             "name": "■■아영■■",
             "combo": "1",
             "account": "1",
