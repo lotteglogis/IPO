@@ -1126,6 +1126,20 @@
             "account": "024823681600",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "한강식",
+            "combo": "한국투자증권",
+            "account": "6878880901",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "강진원",
+            "combo": "하나증권",
+            "account": "50034823211",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
