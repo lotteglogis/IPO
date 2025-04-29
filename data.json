@@ -764,6 +764,27 @@
             "sharesOwned": 10
         },
         {
+            "name": "엄경용",
+            "combo": "한화투자증권",
+            "account": "04411339528",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "이동주",
+            "combo": "키움증권",
+            "account": "60519902",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
+            "name": "신대식",
+            "combo": "미래에셋증권",
+            "account": "220224589865",
+            "stockPrice": 13500,
+            "sharesOwned": 10
+        },
+        {
             "name": "■■3팀-김현우■■",
             "combo": "1",
             "account": "1",
