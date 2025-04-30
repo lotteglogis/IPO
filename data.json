@@ -1196,6 +1196,20 @@
             "account": "13401017012",
             "stockPrice": 13500,
             "sharesOwned": 5
+        },
+        {
+            "name": "노승익",
+            "combo": "KB증권",
+            "account": "26590679901",
+            "stockPrice": 13500,
+            "sharesOwned": 5
+        },
+        {
+            "name": "이지유",
+            "combo": "KB증권",
+            "account": "27591011701",
+            "stockPrice": 13500,
+            "sharesOwned": 5
         }
     ]
 }
