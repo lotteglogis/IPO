@@ -1079,6 +1079,13 @@
             "sharesOwned": 5
         },
         {
+            "name": "구본명",
+            "combo": "kb증권",
+            "account": "20601741230",
+            "stockPrice": 13500,
+            "sharesOwned": 3
+        },
+        {
             "name": "■■3팀-이동규■■",
             "combo": "1",
             "account": "1",
